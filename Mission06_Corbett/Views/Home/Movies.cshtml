@@ -3,5 +3,33 @@
     ViewData["Title"] = "Movies";
 }
 
-<h1>Movies</h1>
+@model Movie
+
+<h1>New Movie Form:</h1>
+<form method="post">
+    <div>
+		<label asp-for="Category">Category</label>
+		<input asp-for="Category" />
+    </div>
+    <div>
+        <label asp-for="Title">Title</label>
+        <input asp-for="Title" />
+    </div>
+    <div>
+        <label asp-for="Year">Year</label>
+        <input asp-for="Year" />
+    </div>
+    <div>
+        <label asp-for="Director">Director</label>
+        <input asp-for="Director" />
+    </div>
+    
+    <div>
+        <label asp-for="Rating">Rating</label>
+        <input asp-for="Rating" />
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+
 
