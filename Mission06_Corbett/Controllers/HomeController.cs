@@ -6,11 +6,11 @@ namespace Mission06_Corbett.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private MoviesContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(MoviesContext temp) //Constructor
         {
-            _logger = logger;
+            _context = temp;
         }
 
         public IActionResult Index()
@@ -31,6 +31,10 @@ namespace Mission06_Corbett.Controllers
         [HttpPost]
         public IActionResult Movies(Movie response)
         {
+
+            _context.Movies.Add(response); //Add record to db
+            _context.SaveChanges(); //Save changes to db
+
             return View("Confirmation", response);
         }
 
