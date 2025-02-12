@@ -28,6 +28,12 @@ namespace Mission06_Corbett.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Movies(Movie response)
+        {
+            return View("Confirmation", response);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
