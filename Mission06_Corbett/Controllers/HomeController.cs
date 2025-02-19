@@ -38,6 +38,14 @@ namespace Mission06_Corbett.Controllers
             return View("Confirmation", response);
         }
 
+        public IActionResult MovieList()
+        {
+            var movies = _context.Movies
+                .OrderBy(m => m.Title).ToList();
+
+            return View(movies);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
