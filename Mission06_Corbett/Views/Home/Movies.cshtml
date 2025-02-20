@@ -7,9 +7,19 @@
 
 <h1>New Movie Form:</h1>
 <form method="post">
+
+    <input type="hidden" asp-for="MovieId" />
+
     <div>
-		<label asp-for="Category">Category</label>
-		<input asp-for="Category" required/>
+		<label>Category</label>
+		<select asp-for="CategoryId">
+			<option value="">Select a Category</option>
+
+            @foreach (Category c in ViewBag.Categories)
+			{
+				<option value="@c.CategoryId">@c.CategoryName</option>
+			}
+        </select>
     </div>
     <div>
         <label asp-for="Title">Title</label>
@@ -17,16 +27,16 @@
     </div>
     <div>
         <label asp-for="Year">Year</label>
-        <input asp-for="Year" required/>
+        <input asp-for="Year" type="number" min="1888" required/>
     </div>
     <div>
         <label asp-for="Director">Director</label>
-        <input asp-for="Director" required/>
+        <input asp-for="Director"/>
     </div>
     
     <div>
         <label asp-for="Rating">Rating</label>
-        <select asp-for="Rating" required>
+        <select asp-for="Rating" >
             <option value="NR">NR</option>
             <option value="UR">UR</option>
             <option value="G">G</option>
@@ -41,7 +51,7 @@
     </div>
     <div>
 		<label asp-for="Edited">Edited</label>
-		<select asp-for="Edited">
+		<select asp-for="Edited" required>
 			<option value="true">Yes</option>
 			<option value="false">No</option>
         </select>
@@ -51,10 +61,19 @@
 		<input asp-for="LentTo" />
     </div>
     <div>
+		<label asp-for="CopiedToPlex">Copied to Plex</label>
+        <select asp-for="CopiedToPlex" required>
+			<option value="true">Yes</option>
+			<option value="false">No</option>
+        </select>
+    </div>
+    <div>
 		<label asp-for="Notes">Notes</label>
 		<input asp-for="Notes" maxlength="25"/>
     </div>
     <button type="submit">Submit</button>
+
+    <div asp-validation-summary="All"></div>
 </form>
 
 
